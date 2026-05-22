@@ -5,7 +5,7 @@ def menu():
 
     while True:
         print("\n==============================")
-        print(" SIMULATOR PEMILIHAN KETUA")
+        print(" SIMULATOR PEMILIHAN KETUA ORGANISASI")
         print("==============================")
         print("1. Registrasi pemilih")
         print("2. Tambah kandidat")
