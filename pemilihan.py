@@ -67,3 +67,17 @@ class Pemilihan:
     #pilih 13
     def export(self):
         pass
+    
+    #pilih 14
+    def slide(self):
+        pass
+    
+    #pilih 15
+    def total_suara_rekursif(self, data):
+        if len(data) == 0:
+            return 0
+
+        return (
+            data[0].suara +
+            self.total_suara_rekursif(data[1:])
+        )

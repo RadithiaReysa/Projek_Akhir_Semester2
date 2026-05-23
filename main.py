@@ -20,6 +20,8 @@ def menu():
         print("11. Cari pemilih")
         print("12. Tampilkan graph dukungan")
         print("13. Ekspor hasil")
+        print("14. Slide Kandidat")
+        print("15. Total suara rekursif")
         print("0. Keluar")
 
         pilihan = input("Pilih menu : ")
@@ -76,6 +78,15 @@ def menu():
 
         elif pilihan == "13":
             sistem.export()
+
+        elif pilihan == "14":
+            sistem.slide()
+            
+        elif pilihan == "15":
+            data = sistem.kandidat.to_list()
+            total = sistem.total_suara_rekursif(data)
+
+            print("Total suara sah :", total)
 
         elif pilihan == "0":
             break

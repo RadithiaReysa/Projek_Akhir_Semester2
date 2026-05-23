@@ -37,3 +37,14 @@ class SingleLinkedList:
             cur = cur.next
 
         return None
+    
+    def to_list(self):
+
+        hasil = []
+        cur = self.head
+
+        while cur is not None:
+            hasil.append(cur.data)
+            cur = cur.next
+
+        return hasil
