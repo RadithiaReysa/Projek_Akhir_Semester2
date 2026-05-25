@@ -22,6 +22,8 @@ def menu():
         print("13. Ekspor hasil")
         print("14. Slide Kandidat")
         print("15. Total suara rekursif")
+        print("16. Next kandidat")
+        print("17. Previous kandidat")
         print("0. Keluar")
 
         pilihan = input("\nPilih menu: ")
@@ -87,6 +89,12 @@ def menu():
             total = sistem.total_suara_rekursif(data)
 
             print("Total suara sah:", total)
+
+        elif pilihan == "16":
+            sistem.next_kandidat()
+
+        elif pilihan == "17":
+            sistem.prev_kandidat()
 
         elif pilihan == "0":
             break

@@ -38,6 +38,30 @@ class SingleLinkedList:
 
         return None
     
+    def hapus_kandidat(self, nomor):
+
+        current = self.head
+        previous = None
+
+        while current:
+
+            if current.data.nomor == nomor:
+
+                if previous is None:
+
+                    self.head = current.next
+
+                else:
+
+                    previous.next = current.next
+
+                return current.data
+
+            previous = current
+            current = current.next
+
+        return None
+
     def to_list(self):
 
         hasil = []

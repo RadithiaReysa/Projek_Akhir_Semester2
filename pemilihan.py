@@ -1,10 +1,14 @@
 from models import Kandidat
 from single_linked_list import SingleLinkedList
+from Circular_Linked_List import CircularLinkedList
+from doubly_linked_list import DoublyLinkedList
 
 class Pemilihan:
     def __init__(self):
         self.kandidat = SingleLinkedList()
         self.pemilih = {}
+        self.slide_show = CircularLinkedList()
+        self.navigasi = DoublyLinkedList()
 
     #pilih 1
     def registrasi(self,nim,nama):
@@ -14,9 +18,19 @@ class Pemilihan:
         self.pemilih[nim] = nama
 
     #pilih 2
-    def tambah_kandidat(self,nomor,nama,vm):
-        calon = Kandidat(nomor,nama,vm)
+    def tambah_kandidat(self, nomor, nama, vm):
+
+        calon = Kandidat(
+            nomor,
+            nama,
+            vm
+        )
+       
         self.kandidat.tambah_belakang(calon)
+        
+        self.navigasi.tambah(calon)
+        
+        self.slide_show.tambah(calon)
 
     #pilih 3
     def hapus_kandidat(self,nomor):
@@ -66,11 +80,12 @@ class Pemilihan:
     
     #pilih 13
     def export(self):
+
         pass
     
     #pilih 14
     def slide(self):
-        pass
+        self.slide_show.slide()
     
     #pilih 15
     def total_suara_rekursif(self, data):
@@ -81,3 +96,18 @@ class Pemilihan:
             data[0].suara +
             self.total_suara_rekursif(data[1:])
         )
+    
+    #pilih 16
+    def next_kandidat(self):
+        kandidat = self.navigasi.next_kandidat()
+        if kandidat:
+            print(kandidat.tampil_ringkas())
+
+        else:
+            print("Data kandidat kosong")
+
+    #pilih 17
+    def prev_kandidat(self):
+        kandidat = self.navigasi.prev_kandidat()
+
+        print(kandidat.tampil_ringkas())
