@@ -24,21 +24,21 @@ def menu():
         print("15. Total suara rekursif")
         print("0. Keluar")
 
-        pilihan = input("Pilih menu : ")
+        pilihan = input("\nPilih menu: ")
 
         if pilihan == "1":
-            nim = input("NIM : ")
-            nama = input("Nama : ")
+            nim = input("NIM: ")
+            nama = input("Nama: ")
             sistem.registrasi(nim, nama)
 
         elif pilihan == "2":
-            nomor = int(input("Nomor : "))
-            nama = input("Nama : ")
-            vm = input("Visi Misi : ")
+            nomor = int(input("Nomor: "))
+            nama = input("Nama: ")
+            vm = input("Visi Misi: ")
             sistem.tambah_kandidat(nomor, nama, vm)
 
         elif pilihan == "3":
-            nomor = int(input("Nomor : "))
+            nomor = int(input("Nomor: "))
             sistem.hapus_kandidat(nomor)
 
         elif pilihan == "4":
@@ -48,19 +48,19 @@ def menu():
             sistem.lihat_kandidat()
 
         elif pilihan == "6":
-            nomor = int(input("Nomor : "))
+            nomor = int(input("Nomor: "))
             sistem.detail_kandidat(nomor)
 
         elif pilihan == "7":
-            nim = input("NIM : ")
+            nim = input("NIM: ")
             sistem.antre(nim)
 
         elif pilihan == "8":
             sistem.panggil()
 
         elif pilihan == "9":
-            nim = input("NIM : ")
-            nomor = int(input("Nomor kandidat : "))
+            nim = input("NIM: ")
+            nomor = int(input("Nomor kandidat: "))
             dukung = input("Dukung siapa (opsional): ")
             if dukung == "":
                 dukung = None
@@ -70,7 +70,7 @@ def menu():
             sistem.hasil()
 
         elif pilihan == "11":
-            nim = input("NIM : ")
+            nim = input("NIM: ")
             sistem.cari_pemilih(nim)
 
         elif pilihan == "12":
@@ -86,7 +86,7 @@ def menu():
             data = sistem.kandidat.to_list()
             total = sistem.total_suara_rekursif(data)
 
-            print("Total suara sah :", total)
+            print("Total suara sah:", total)
 
         elif pilihan == "0":
             break
@@ -97,5 +97,3 @@ def menu():
 
 if __name__ == "__main__":
     menu()
-
-# test
