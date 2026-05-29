@@ -4,9 +4,9 @@ def menu():
     sistem = Pemilihan()
 
     while True:
-        print("\n==============================")
+        print("\n=====================================")
         print(" SIMULATOR PEMILIHAN KETUA ORGANISASI")
-        print("==============================")
+        print("=====================================")
         print("1. Registrasi pemilih")
         print("2. Tambah kandidat")
         print("3. Hapus kandidat")
@@ -34,10 +34,27 @@ def menu():
             sistem.registrasi(nim, nama)
 
         elif pilihan == "2":
-            nomor = int(input("Nomor: "))
-            nama = input("Nama: ")
-            vm = input("Visi Misi: ")
-            sistem.tambah_kandidat(nomor, nama, vm)
+            while True:
+                try:
+                    nomor = int(input("Nomor : "))
+                    cek = sistem.kandidat.cari_nomor_kandidat(nomor)
+
+                    if cek:
+                        print("Nomor kandidat sudah ada")
+
+                    else:
+                        break
+                    
+                except ValueError:
+                    print("Input harus angka")
+
+            nama = input("Nama : ")
+            vm = input("Visi Misi : ")
+            sistem.tambah_kandidat(
+                nomor,
+                nama,
+                vm
+            )
 
         elif pilihan == "3":
             nomor = int(input("Nomor: "))

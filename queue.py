@@ -2,10 +2,10 @@ class Queue:
     def __init__(self):
         self.data = []
 
-    def enqueue(self, item):
+    def enque(self, item):
         self.data.append(item)
 
-    def dequeue(self):
+    def deque(self):
 
         if len(self.data) == 0:
             return None

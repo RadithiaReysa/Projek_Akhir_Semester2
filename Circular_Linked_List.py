@@ -31,7 +31,7 @@ class CircularLinkedList:
         current.next = node_baru
         node_baru.next = self.head
 
-    def slide(self):
+    def tampil_slide(self):
 
         if self.head is None:
 
