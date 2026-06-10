@@ -25,6 +25,7 @@ class Pemilihan:
         self.storage = Storage()
         self.sudah_voting = set()
         self.rekap_suara = {}
+        self.pemilih_aktif = None
 
     #pilih 1
     def registrasi(self,nim,nama):
@@ -102,7 +103,6 @@ class Pemilihan:
     
     #pilih 7
     def antre(self, nim):
-
         pemilih_terdaftar = self.pemilih.cari(nim)
 
         if pemilih_terdaftar is None:
@@ -110,29 +110,41 @@ class Pemilihan:
             return
 
         self.queue.enque(nim)
-
         print(f"{pemilih_terdaftar} berhasil masuk antrean")
         
     #pilih 8
     def panggil(self):
-        nim = self.queue.deque()
 
+        nim = self.queue.deque()
+    
         if nim is None:
             print("Antrean kosong")
             return
     
+        self.pemilih_aktif = nim
+    
         pemilih_terdaftar = self.pemilih.cari(nim)
     
-        print(f"Dipanggil : {pemilih_terdaftar} ({nim})")
+        print(
+            f"Dipanggil : "
+            f"{pemilih_terdaftar} ({nim})"
+        )
 
     #pilih 9
     def voting(self, nim, nomor, dukung=None):
+        if self.pemilih.cari(nim) is None:
+            print("Pemilih belum terdaftar")
+            return
+
+        if self.pemilih_aktif != nim:
+            print("Pemilih belum dipanggil")
+            return
+
         if nim in self.sudah_voting:
             print("Sudah voting")
             return
-        
-        kandidat = self.kandidat.cari_nomor_kandidat(nomor)
 
+        kandidat = self.kandidat.cari_nomor_kandidat(nomor)
         if kandidat is None:
             print("Kandidat tidak ditemukan")
             return
@@ -144,12 +156,13 @@ class Pemilihan:
             self.rekap_suara[kandidat.nama] = 0
 
         self.rekap_suara[kandidat.nama] += 1
-
         if dukung:
             self.graph.tambah_relasi(
                 nim,
                 dukung
             )
+
+        self.pemilih_aktif = None
         print("Voting berhasil")
     
     #pilih 10
