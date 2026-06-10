@@ -91,7 +91,7 @@ class Pemilihan:
         self.kandidat.tampilkan_data()
     
     #pilih 6
-    def detail_kandidat(self, nomor):
+    def Cari_kandidat(self, nomor):
         kandidat = self.kandidat.cari_nomor_kandidat(nomor)
 
         if kandidat:
@@ -102,19 +102,28 @@ class Pemilihan:
     
     #pilih 7
     def antre(self, nim):
-        self.queue.enque(nim)
-        print("Masuk Antrean")
 
+        pemilih_terdaftar = self.pemilih.cari(nim)
+
+        if pemilih_terdaftar is None:
+            print("Pemilih belum terdaftar")
+            return
+
+        self.queue.enque(nim)
+
+        print(f"{pemilih_terdaftar} berhasil masuk antrean")
+        
     #pilih 8
     def panggil(self):
-        data = self.queue.deque()
+        nim = self.queue.deque()
 
-        if data:
-            print("Dipanggil :", data)
-
-        else:
+        if nim is None:
             print("Antrean kosong")
-
+            return
+    
+        pemilih_terdaftar = self.pemilih.cari(nim)
+    
+        print(f"Dipanggil : {pemilih_terdaftar} ({nim})")
 
     #pilih 9
     def voting(self, nim, nomor, dukung=None):
