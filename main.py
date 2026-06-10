@@ -12,7 +12,7 @@ def menu():
         print("3. Hapus kandidat")
         print("4. Undo aksi admin")
         print("5. Lihat kandidat")
-        print("6. Detail kandidat")
+        print("6. Cari kandidat")
         print("7. Antre pemilih")
         print("8. Panggil pemilih berikutnya")
         print("9. Voting")
@@ -68,7 +68,7 @@ def menu():
 
         elif pilihan == "6":
             nomor = int(input("Nomor: "))
-            sistem.detail_kandidat(nomor)
+            sistem.Cari_kandidat(nomor)
 
         elif pilihan == "7":
             nim = input("NIM: ")
