@@ -7,3 +7,4 @@ class Kandidat:
 
     def tampil_ringkas(self):
         return f"{self.nomor}. {self.nama} | Suara: {self.suara}"
+    

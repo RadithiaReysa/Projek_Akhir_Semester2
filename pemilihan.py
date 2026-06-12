@@ -202,15 +202,13 @@ class Pemilihan:
         self.circular.tampil_slide()
     
     #pilih 15
-    def total_suara_rekursif(self, data):
-        if len(data) == 0:
-            return 0
+    def total_suara_rekursif(self):
+        data = self.kandidat.to_list()
 
-        return (
-            data[0].suara +
-            self.total_suara_rekursif(data[1:])
-        )
-    
+        total = self.rekursif.total_suara(data)
+
+        return total
+        
     #pilih 16
     def next_kandidat(self):
         kandidat = self.navigasi.next_kandidat()

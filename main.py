@@ -102,9 +102,7 @@ def menu():
             sistem.slide()
             
         elif pilihan == "15":
-            data = sistem.kandidat.to_list()
-            total = sistem.total_suara_rekursif(data)
-
+            total = sistem.total_suara_rekursif()
             print("Total suara sah:", total)
 
         elif pilihan == "16":
